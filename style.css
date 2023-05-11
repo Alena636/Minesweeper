@@ -42,9 +42,10 @@ body {
 
 .title {
     margin: 0 auto;
+    font-size: 60px;
     font-weight: 700;
     color: black;
-    letter-spacing: .6em;
+    letter-spacing: .4em;
 }
 
 .wrapper {
@@ -53,12 +54,12 @@ body {
     width: 1000px;
     display: flex;
     justify-content: space-around;
-    gap: 80px;
     background-color: blueviolet;
 }
 
 .time,
 .count {
+    width: 50px;
     font-size: 32px;
     font-weight: 400;
 }

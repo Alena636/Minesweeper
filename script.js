@@ -9,9 +9,9 @@ function createContainer() {
     title.textContent = 'Minesweeper';
     const wrapper = document.createElement('div');
     wrapper.className = 'wrapper';
-    const time = document.createElement('time');
+    const time = document.createElement('h3');
     time.className = 'time';
-    time.textContent = '00:00:00';
+    time.innerHTML = '<time>00:00:00</time>'
     const countMoves = document.createElement('h4');
     countMoves.className = 'count';
     countMoves.textContent = '0';
@@ -30,3 +30,32 @@ function createField() {
     field.innerHTML = '<button></button>'.repeat(cellsCount);
     return field;
 }
+
+//create timer
+let sec = 0;
+let min = 0;
+let hrs = 0;
+function tick() {
+    sec++;
+    if(sec >= 60) {
+        sec = 0;
+        min++;
+        if(min >= 60) {
+            min = 0;
+            hrs++;
+        }
+    }
+}
+
+function addTime() {
+    const time = document.querySelector('.time')
+    tick();
+    time.textContent = (hrs > 9 ? hrs : '0' + hrs) + ':' + (min > 9 ? min : '0' + min) + ':' + (sec > 9 ? sec : '0' + sec);
+    time = setTimeout(addTime, 1000)
+}
+let t;
+function timer() {
+    t = setTimeout(addTime, 1000);
+}
+
+timer();
