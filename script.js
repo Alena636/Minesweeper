@@ -34,7 +34,7 @@ function createField() {
 }
 
 let countMoves = document.querySelector('.count');
-let count = 1;
+let countMov = 1;
 function startGame() {
     const field = document.querySelector('.field');
     const cellsCount = width * height;
@@ -47,20 +47,63 @@ function startGame() {
         const index = cells.indexOf(event.target);
         const column = index % width;
         const row = Math.floor(index / width);
-        event.target.innerHTML = isMines(row, column) ? 'X' : ' ';
-        event.target.disabled = true;
-        countMoves.textContent = count++;
+        openCell(row, column);
+        countMoves.textContent = countMov++;
     })
 
+    function isValidCount(row, column) {
+        return row >= 0 && row < height && column >= 0 && column < width;
+    }
+
+    function getMinesCount(row, column) {
+        let count = 0;
+        for (let x = -1; x <= 1; x++) { //перебираем соседние клетки
+            for(let y = -1; y <= 1; y++) {
+                if(isMines(row + y, column + x)) {
+                    count++
+                }
+            }
+        }
+        return count;
+    }
+
+    function openCell(row, column) {
+        if(!isValidCount(row, column)) return;
+        const index = row * width + column;
+        const cell = cells[index];
+
+        if(cell.disabled === true) return;
+
+        cell.disabled = true;
+
+        if(isMines(row, column)) {
+            cell.innerHTML = 'X';
+            return;
+            //сюда вставить название функции которая вызывает проигрыш
+        }
+        const count = getMinesCount(row, column);
+        if(count !== 0) {
+            cell.innerHTML = count;
+            return;
+        }
+        for (let x = -1; x <= 1; x++) { //перебираем соседние клетки
+            for(let y = -1; y <= 1; y++) {
+                openCell(row + y, column + x) //открываем соседние ячейки
+            }
+        }
+    }
+    
+
     function isMines(row, column) {
+        if(!isValidCount(row, column)) return false;
         const index = row * width + column;
        // const cellsCount = width * height;
        // const minesIndex = [...Array(cellsCount).keys()].sort(() => Math.random() - 0.5).slice(0, minesCount);
         console.log(minesIndex)
         return minesIndex.includes(index);
-        
     }
 }
+
 startGame()
 
 
