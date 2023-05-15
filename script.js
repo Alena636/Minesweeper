@@ -5,7 +5,7 @@ let minesCount = 10;
 function createContainer() {
     const container = document.createElement('div');
     container.className = 'container';
-    const title = document.createElement('h1');
+    const title = document.createElement('h2');
     title.className = 'title';
     title.textContent = 'Minesweeper';
     const wrapper = document.createElement('div');
@@ -13,12 +13,15 @@ function createContainer() {
     const time = document.createElement('h3');
     time.className = 'time';
     time.innerHTML = '<time>00:00:00</time>'
+    const newGame = document.createElement('button');
+    newGame.className = 'new_game-btn';
+    newGame.textContent = 'New Game';
     const countMoves = document.createElement('h3');
     countMoves.className = 'count';
     countMoves.innerHTML = '<p class="moves">0</p>'
     //countMoves.textContent = '0';
     const field = createField();
-    wrapper.append(time, countMoves);
+    wrapper.append(time, newGame, countMoves);
     container.append(title, wrapper, field);
     document.body.append(container);
 }
@@ -103,9 +106,7 @@ function startGame() {
         return minesIndex.includes(index);
     }
 }
-
 startGame()
-
 
 
 //create timer---------------------------------------------
@@ -136,3 +137,36 @@ function timer() {
 }
 
 timer();
+
+
+function buildModal() {
+    const modal = document.createElement('div');
+    modal.className = 'modal-window active';
+
+    const title = document.createElement('h1');
+    title.className = 'title-name';
+    title.textContent = 'Minesweeper';
+
+    const modalContainer = document.createElement('div');
+    modalContainer.className = 'modal-container';
+
+    const buttonStart = document.createElement('button');
+    buttonStart.textContent = 'START';
+    buttonStart.className = 'start-button';
+
+    modal.append(title, modalContainer, buttonStart);
+    document.body.append(modal);
+}
+buildModal();
+
+const buttonStart = document.querySelector('.start-button');
+const modal = document.querySelector('.modal-window.active');
+buttonStart.addEventListener('click', () => {
+    modal.classList.remove('active');
+})
+
+const newGame = document.querySelector('.new_game-btn');
+newGame.addEventListener('click', () => {
+    window.location.reload();
+})
+

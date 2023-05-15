@@ -26,7 +26,11 @@ img {
 body {
     font-family: 'Lora', serif;
     width: 100%;
-    background-color: brown;
+    background-color: #223543;
+}
+
+.lock {
+    overflow: hidden;
 }
 
 .container {
@@ -36,7 +40,7 @@ body {
     background-color: blue;
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 20px;
     padding: 20px;
 }
 
@@ -51,8 +55,9 @@ body {
 .wrapper {
     padding: 10px;
     margin: 0 auto;
-    width: 1000px;
+    width: 800px;
     display: flex;
+    align-items: center;
     justify-content: space-around;
     background-color: blueviolet;
 }
@@ -64,6 +69,22 @@ body {
     font-weight: 400;
 }
 
+.new_game-btn {
+    width: 140px;
+    height: 50px;
+    background-color: #dcd8cc;
+    box-shadow: inset 0px -4px 2px #A1A19F, inset 0px 3px 1px #E5E7E2, inset -1px -6px 6px #A2A2A0;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: .7s ease-out;
+    font-family: 'Trebuchet MS';
+    font-size: 16px;
+}
+
+.new_game-btn:hover {
+    background-color: lightpink;
+}
+
 .field {
     display: grid;
     grid-template-columns: repeat(10, 50px);
@@ -71,8 +92,70 @@ body {
     margin: 0 auto;
 }
 
-button {
+.cell {
     height: 50px;
     font-size: 24px;
     cursor: pointer;
+    box-shadow: inset 0px -3px 2px #A1A19F, inset 0px 3px 1px #E5E7E2, inset -1px -3px 3px #A2A2A0;
+}
+
+.modal-window {
+    position: fixed;
+    top: 100%;
+    width: 100%;
+    height: 100%;
+    z-index: 1200;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #223543;
+    transition: 0s;
+    padding: 40px;
+}
+
+.modal-window.active {
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    transition: .7s;
+}
+
+.title-name {
+    margin: 0 auto;
+    font-size: 60px;
+    font-weight: 700;
+    letter-spacing: .4em;
+    color: #dcd8cc;
+}
+
+.modal-container {
+    width: 100%;
+    height: 100%;
+    left: 14.85vw;
+    top: 21.5vh;
+    z-index: 2;
+    background-color: #223543;
+    border-radius: 9px;
+}
+
+.start-button {
+    width: 380px;
+    height: 180px;
+    background-color: #dcd8cc;
+    position: absolute;
+    z-index: 2;
+    box-shadow: inset 0px -4px 2px #A1A19F, inset 0px 3px 1px #E5E7E2, inset -1px -6px 6px #A2A2A0;
+    border-radius: 20px;
+    font-weight: bold;
+    font-family: 'co MS';
+    font-size: 40px;
+    letter-spacing: .3em;
+    transition: .7s ease-out;
+}
+
+.start-button:hover {
+    background-color: lightpink;
 }
