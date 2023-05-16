@@ -35,7 +35,7 @@ function createField() {
     field.innerHTML = '<button class="cell"></button>'.repeat(cellsCount);
     return field;
 }
-
+let firstClick = 0;
 let countMoves = document.querySelector('.count');
 let countMov = 1;
 function startGame() {
@@ -45,16 +45,26 @@ function startGame() {
 
     let closedCells = cellsCount;
 
-    const minesIndex = [...Array(cellsCount).keys()].sort(() => Math.random() - 0.5).slice(0, minesCount);
+    let minesIndex = [...Array(cellsCount).keys()].sort(() => Math.random() - 0.5).slice(0, minesCount);
     field.addEventListener('click', (event) => {
         if(event.target.tagName !== 'BUTTON') {
             return;
         }
+        event.target.textContent = ' ';
         const index = cells.indexOf(event.target);
         const column = index % width;
         const row = Math.floor(index / width);
+        firstClick++;
+        if(firstClick === 1 && minesIndex.includes(index)) {
+            while (minesIndex.includes(index)) {
+                minesIndex = [...Array(cellsCount).keys()].sort(() => Math.random() - 0.5).slice(0, minesCount);
+            }
+            console.log('dfhgh')
+        }
         openCell(row, column);
         countMoves.textContent = countMov++;
+       
+        
     })
 
     function isValidCount(row, column) {
@@ -81,6 +91,7 @@ function startGame() {
         if(cell.disabled === true) return;
 
         cell.disabled = true;
+        
         
 
         if(isMines(row, column)) {
@@ -112,6 +123,7 @@ function startGame() {
             document.body.append(messageWrapper);
             newGameBtn.addEventListener('click', () => {
                 window.location.reload();
+                document.body.classList.add('lock');
             })
         }
 
@@ -131,6 +143,7 @@ function startGame() {
             document.body.append(messageWrapper);
             newGameBtn.addEventListener('click', () => {
                 window.location.reload();
+                document.body.classList.add('lock');
             })
         }
 
@@ -251,7 +264,6 @@ const newGame = document.querySelector('.new_game-btn');
 newGame.addEventListener('click', () => {
         window.location.reload();
     })
-
 
 
 
