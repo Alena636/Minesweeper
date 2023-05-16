@@ -42,6 +42,9 @@ function startGame() {
     const field = document.querySelector('.field');
     const cellsCount = width * height;
     const cells = [...field.children];
+
+    let closedCells = cellsCount;
+
     const minesIndex = [...Array(cellsCount).keys()].sort(() => Math.random() - 0.5).slice(0, minesCount);
     field.addEventListener('click', (event) => {
         if(event.target.tagName !== 'BUTTON') {
@@ -78,12 +81,41 @@ function startGame() {
         if(cell.disabled === true) return;
 
         cell.disabled = true;
+        
 
         if(isMines(row, column)) {
-            cell.innerHTML = 'X';
+            cell.innerHTML = '<img src="assets/bomb.svg" alt="Mine" />';
+            cell.style.backgroundColor = 'red';
             return;
             //сюда вставить название функции которая вызывает проигрыш
         }
+        closedCells--;
+        if(closedCells <= minesCount) {
+            //alert('You win!');
+            getWinMessage();
+            clearTimeout(t);
+        }
+
+        function getWinMessage() {
+            const messageWrapper = document.createElement('div');
+            messageWrapper.className = 'message-wrapper';
+            const messageContainer = document.createElement('div');
+            messageContainer.className = 'message-container';
+            const message = document.createElement('p');
+            message.className = 'message';
+            message.innerHTML = '<p>Hooray! You found all mines in ' + `${min}` + ' minutes ' + `${sec}` + ' seconds and ' + `${countMov}` + ' moves!</p>'; 
+            //`"Hooray! You found all mines in ${time} seconds and ${countMov} moves!"`;
+            const newGameBtn = document.createElement('button');
+            newGameBtn.className = 'new_game';
+            newGameBtn.textContent = 'New Game';
+            messageContainer.append(message, newGameBtn);
+            messageWrapper.append(messageContainer);
+            document.body.append(messageWrapper);
+            newGameBtn.addEventListener('click', () => {
+                window.location.reload();
+            })
+        }
+
         const count = getMinesCount(row, column);
         if(count !== 0) {
             cell.innerHTML = count;
@@ -105,9 +137,9 @@ function startGame() {
         console.log(minesIndex)
         return minesIndex.includes(index);
     }
+    
 }
 startGame()
-
 
 //create timer---------------------------------------------
 let sec = 0;
@@ -124,9 +156,8 @@ function tick() {
         }
     }
 }
-
+const time = document.querySelector('.time');
 function addTime() {
-    const time = document.querySelector('.time')
     tick();
     time.textContent = (hrs > 9 ? hrs : '0' + hrs) + ':' + (min > 9 ? min : '0' + min) + ':' + (sec > 9 ? sec : '0' + sec);
     timer();
@@ -135,8 +166,6 @@ let t;
 function timer() {
     t = setTimeout(addTime, 1000);
 }
-
-timer();
 
 
 function buildModal() {
@@ -163,10 +192,15 @@ const buttonStart = document.querySelector('.start-button');
 const modal = document.querySelector('.modal-window.active');
 buttonStart.addEventListener('click', () => {
     modal.classList.remove('active');
+    timer();
 })
 
 const newGame = document.querySelector('.new_game-btn');
 newGame.addEventListener('click', () => {
-    window.location.reload();
-})
+        window.location.reload();
+    })
+
+
+
+
 
