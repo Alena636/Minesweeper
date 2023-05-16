@@ -86,12 +86,12 @@ function startGame() {
         if(isMines(row, column)) {
             cell.innerHTML = '<img src="assets/bomb.svg" alt="Mine" />';
             cell.style.backgroundColor = 'red';
+            setTimeout(getLoseMessage, 800);
+            clearTimeout(t);
             return;
-            //сюда вставить название функции которая вызывает проигрыш
         }
         closedCells--;
         if(closedCells <= minesCount) {
-            //alert('You win!');
             getWinMessage();
             clearTimeout(t);
         }
@@ -104,7 +104,25 @@ function startGame() {
             const message = document.createElement('p');
             message.className = 'message';
             message.innerHTML = '<p>Hooray! You found all mines in ' + `${min}` + ' minutes ' + `${sec}` + ' seconds and ' + `${countMov}` + ' moves!</p>'; 
-            //`"Hooray! You found all mines in ${time} seconds and ${countMov} moves!"`;
+            const newGameBtn = document.createElement('button');
+            newGameBtn.className = 'new_game';
+            newGameBtn.textContent = 'New Game';
+            messageContainer.append(message, newGameBtn);
+            messageWrapper.append(messageContainer);
+            document.body.append(messageWrapper);
+            newGameBtn.addEventListener('click', () => {
+                window.location.reload();
+            })
+        }
+
+        function getLoseMessage() {
+            const messageWrapper = document.createElement('div');
+            messageWrapper.className = 'message-wrapper';
+            const messageContainer = document.createElement('div');
+            messageContainer.className = 'message-container';
+            const message = document.createElement('p');
+            message.className = 'message';
+            message.innerHTML = 'Game over. Try again';
             const newGameBtn = document.createElement('button');
             newGameBtn.className = 'new_game';
             newGameBtn.textContent = 'New Game';
@@ -119,11 +137,45 @@ function startGame() {
         const count = getMinesCount(row, column);
         if(count !== 0) {
             cell.innerHTML = count;
+            if(count === 1) {
+                cell.style.backgroundColor = 'lightgreen';
+                return;
+            }
+            if(count === 2) {
+                cell.style.backgroundColor = '#1b998b';
+                return;
+            }
+            if(count === 3) {
+                cell.style.backgroundColor = '#f46036';
+                return;
+            }
+            if(count === 4) {
+                cell.style.backgroundColor = '#d7263d';
+                return;
+            }
+            if(count === 5) {
+                cell.style.backgroundColor = '#2e294e';
+                return;
+            }
+            if(count === 6) {
+                cell.style.backgroundColor = '#990033';
+                return;
+            }
+            if(count === 7) {
+                cell.style.backgroundColor = '#ff9000';
+                return;
+            }
+            if(count === 8) {
+                cell.style.backgroundColor = '#660000';
+                return;
+            }
             return;
         }
+        
         for (let x = -1; x <= 1; x++) { //перебираем соседние клетки
             for(let y = -1; y <= 1; y++) {
                 openCell(row + y, column + x) //открываем соседние ячейки
+                cell.style.backgroundColor = '#89a7a7';
             }
         }
     }
