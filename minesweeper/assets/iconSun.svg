@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="400" height="400" viewBox="0 0 400 400" xml:space="preserve">
+<desc>Created with Fabric.js 3.6.2</desc>
+<defs>
+</defs>
+<g transform="matrix(6.25 0 0 6.25 200 200)" id="Filled_Outline"  >
+<circle style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(242,176,53); fill-rule: nonzero; opacity: 1;"  cx="0" cy="0" r="9" />
+</g>
+<g transform="matrix(6.25 0 0 6.25 200 200)" id="Filled_Outline"  >
+<path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(26,26,26); fill-rule: nonzero; opacity: 1;"  transform=" translate(-16, -16)" d="M 16 26 c -5.514 0 -10 -4.486 -10 -10 S 10.486 6 16 6 s 10 4.486 10 10 S 21.514 26 16 26 z M 16 8 c -4.411 0 -8 3.589 -8 8 s 3.589 8 8 8 s 8 -3.589 8 -8 S 20.411 8 16 8 z" stroke-linecap="round" />
+</g>
+<g transform="matrix(6.25 0 0 6.25 200 112.5)" id="Filled_Outline"  >
+<rect style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(26,26,26); fill-rule: nonzero; opacity: 1;"  x="-1" y="-2" rx="0" ry="0" width="2" height="4" />
+</g>
+<g transform="matrix(4.42 -4.42 4.42 4.42 138.13 138.13)" id="Filled_Outline"  >
+<rect style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(26,26,26); fill-rule: nonzero; opacity: 1;"  x="-1" y="-2" rx="0" ry="0" width="2" height="4" />
+</g>
+<g transform="matrix(6.25 0 0 6.25 112.5 200)" id="Filled_Outline"  >
+<rect style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(26,26,26); fill-rule: nonzero; opacity: 1;"  x="-2" y="-1" rx="0" ry="0" width="4" height="2" />
+</g>
+<g transform="matrix(4.42 -4.42 4.42 4.42 138.13 261.87)" id="Filled_Outline"  >
+<rect style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(26,26,26); fill-rule: nonzero; opacity: 1;"  x="-2" y="-1" rx="0" ry="0" width="4" height="2" />
+</g>
+<g transform="matrix(6.25 0 0 6.25 200 287.5)" id="Filled_Outline"  >
+<rect style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(26,26,26); fill-rule: nonzero; opacity: 1;"  x="-1" y="-2" rx="0" ry="0" width="2" height="4" />
+</g>
+<g transform="matrix(4.42 -4.42 4.42 4.42 261.87 261.87)" id="Filled_Outline"  >
+<rect style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(26,26,26); fill-rule: nonzero; opacity: 1;"  x="-1" y="-2" rx="0" ry="0" width="2" height="4" />
+</g>
+<g transform="matrix(6.25 0 0 6.25 287.5 200)" id="Filled_Outline"  >
+<rect style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(26,26,26); fill-rule: nonzero; opacity: 1;"  x="-2" y="-1" rx="0" ry="0" width="4" height="2" />
+</g>
+<g transform="matrix(4.42 -4.42 4.42 4.42 261.87 138.13)" id="Filled_Outline"  >
+<rect style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(26,26,26); fill-rule: nonzero; opacity: 1;"  x="-2" y="-1" rx="0" ry="0" width="4" height="2" />
+</g>
+</svg>

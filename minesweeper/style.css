@@ -29,6 +29,11 @@ body {
     background-image: url(assets/background.png);
 }
 
+.light_theme {
+    width: 100%;
+    background-image: url(assets/fonLightTheme.png);
+}
+
 .lock {
     overflow: hidden;
 }
@@ -37,12 +42,16 @@ body {
     max-width: 800px;
     height: 100%;
     margin: 0 auto;
-    background-color: blue;
+    background-color: #223543;
     display: flex;
     flex-direction: column;
     gap: 20px;
     padding-top: 20px;
     padding-bottom: 20px;
+}
+
+.light_container {
+    background-color: #D9D9D9;
 }
 
 .title {
@@ -60,14 +69,49 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    background-color: blueviolet;
+    background-color: #DCD8CC;
+    border-radius: 20px;
 }
+
+.light_wrapper {
+    background-color: #223543;
+}
+
+.footer {
+    margin: 0 auto;
+    display: flex;
+    gap: 40px;
+}
+
 
 .time,
 .count {
-    width: 50px;
     font-size: 32px;
     font-weight: 400;
+}
+
+.time {
+    text-align: center;
+    height: 70px;
+    width: 150px;
+    padding: 12px;
+    background-color: #6e44ff;
+    border-radius: 20px;
+    border: 2px solid black;
+    box-shadow: inset 0px 0px 4px 3px rgba(0, 0, 0, 0.3);
+
+}
+
+.count {
+    width: 70px;
+    height: 70px;
+    padding: 12px;
+    text-align: center;
+    background-color: #6e44ff;
+    border-radius: 20px;
+    border: 2px solid black; 
+    box-shadow: inset 0px 0px 4px 3px rgba(0, 0, 0, 0.3);
+
 }
 
 button:disabled {
@@ -99,6 +143,7 @@ button:disabled {
     background-color: #81438d;
     border-radius: 20px;
     border: 2px solid black;
+    box-shadow: inset 0px 0px 4px 3px rgba(0, 0, 0, 0.3);
 }
 
 .count_flag {
@@ -110,7 +155,8 @@ button:disabled {
 }
 
 .flag_img {
-    background-image: url('assets/icon-flag.png');
+    background: url('assets/flag.svg') 50% 50% no-repeat;
+    background-size: contain;
 }
 
 .field {
@@ -118,7 +164,9 @@ button:disabled {
     grid-template-columns: repeat(10, 40px);
     gap: 3px;
     margin: 0 auto;
-    background-color: #223543;
+    background-color: #DCD8CC;
+    padding: 10px;
+    border-radius: 20px;
 }
 
 .cell {
@@ -302,10 +350,11 @@ button:disabled {
     margin: 0 auto;
     width: 50px;
     height: 50px;
-    border: 2px solid black;
+    background-color: #dcd8cc;
+    box-shadow: inset 0px -4px 2px #A1A19F, inset 0px 3px 1px #E5E7E2, inset -1px -6px 6px #A2A2A0;
     border-radius: 20px;
     cursor: pointer;
-    transition: .6s;
+    transition: .5s ease-in-out;
 }
 
 .sound-btn:hover {
@@ -316,3 +365,27 @@ button:disabled {
     background-color: rgb(63, 63, 63);
     cursor: default;
 }
+
+.theme {
+    margin: 0 auto;
+    width: 50px;
+    height: 50px;
+    box-shadow: inset 0px -4px 2px #A1A19F, inset 0px 3px 1px #E5E7E2, inset -1px -6px 6px #A2A2A0;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: .5s ease-in-out;
+    background: url('assets/iconMoon.svg') 100% 100% no-repeat;
+    background-size: contain;
+    background-color: #dcd8cc;
+}
+
+.theme:hover {
+    background-color: #FFB6C1;
+}
+
+.light {
+    background: url('assets/iconSun.svg') 100% 50% no-repeat;
+    background-size: contain;
+    background-color: #dcd8cc;
+}
+

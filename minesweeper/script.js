@@ -6,9 +6,9 @@ let minesCount = 10;
 function createContainer() {
     const container = document.createElement('div');
     container.className = 'container';
-    const title = document.createElement('h2');
-    title.className = 'title';
-    title.textContent = 'Minesweeper';
+    //const title = document.createElement('h2');
+    //title.className = 'title';
+    //title.textContent = 'Minesweeper';
     const wrapper = document.createElement('div');
     wrapper.className = 'wrapper';
     const time = document.createElement('h3');
@@ -27,12 +27,17 @@ function createContainer() {
     countMoves.className = 'count';
     countMoves.innerHTML = '<p class="moves">0</p>'
     const field = createField();
+    const footer = document.createElement('div');
+    footer.className = 'footer';
     const soundBtn = document.createElement('button');
     soundBtn.innerHTML = '<img src="assets/soundIcon.svg" alt="sound_icon" />';
     soundBtn.classList = 'sound-btn';
+    const theme = document.createElement('button');
+    theme.className = 'theme';
     flag.append(countFlag);
     wrapper.append(time, newGame, flag, countMoves);
-    container.append(title, wrapper, field, soundBtn);
+    footer.append(soundBtn, theme);
+    container.append( wrapper, field, footer);
     document.body.append(container);
 }
 createContainer();
@@ -94,9 +99,14 @@ function startGame() {
         }
        //если кликаешь на циру то она превращется в флажок такого не должно быть
         if(countFlags !== -1 ) {
-            event.target.innerHTML = '<img src="assets/icon-flag.png" alt="flag" width="70" />';
-                //event.target.classList.add('flag_img');
+            event.target.classList.toggle('flag_img');
+            //innerHTML = '<img src="assets/icon-flag.png" alt="flag" width="70" />';
                 countFlag.textContent = countFlags--;
+               /* if(event.target.classList.contains('flag_img') ) {
+                    event.target.classList.remove('flag_img');
+                    countFlag.textContent = countFlags++;
+                    return;
+                }*/
                 const audio = new Audio();
                 audio.src = 'assets/flag.mp3';
                 audio.play();
@@ -332,22 +342,17 @@ soundBtn.addEventListener('click', () => {
 
 let isPlay = false;
 
-/*window.addEventListener('load', () => {
-    const audio = new Audio();
-    audio.src = 'assets/fonGame.mp3';
-    audio.play();
-    audio.volume = 0.2;
-    audio.onended = function() {
-    audio.play();
-   }
-    if(soundBtn.classList.contains('sound')){
-        audio.pause();
-        return;
-    }
-    
-    isPlay = true;
-    playAudio();  
-})*/
+const wrapper = document.querySelector('.wrapper');
+const container = document.querySelector('.container');
+const theme = document.querySelector('.theme');
+theme.addEventListener('click', () => {
+    theme.classList.toggle('light');
+    document.body.classList.toggle('light_theme');
+    container.classList.toggle('light_container');
+    wrapper.classList.toggle('light_wrapper');
+})
+
+
 
 
 
