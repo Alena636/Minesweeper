@@ -1,6 +1,7 @@
 let width = 10;
 let height = 10;
 let minesCount = 10;
+
 //add container---------------------------------------
 function createContainer() {
     const container = document.createElement('div');
@@ -16,16 +17,28 @@ function createContainer() {
     const newGame = document.createElement('button');
     newGame.className = 'new_game-btn';
     newGame.textContent = 'New Game';
+    const flag = document.createElement('div');
+    flag.className = 'flag';
+    flag.innerHTML = '<img src="assets/flag.svg" alt="flag" width="70" />';
+    const countFlag = document.createElement('p');
+    countFlag.className = 'count_flag';
+    countFlag.textContent = '10';
     const countMoves = document.createElement('h3');
     countMoves.className = 'count';
     countMoves.innerHTML = '<p class="moves">0</p>'
-    //countMoves.textContent = '0';
     const field = createField();
-    wrapper.append(time, newGame, countMoves);
-    container.append(title, wrapper, field);
+    const soundBtn = document.createElement('button');
+    soundBtn.innerHTML = '<img src="assets/soundIcon.svg" alt="sound_icon" />';
+    soundBtn.classList = 'sound-btn';
+    flag.append(countFlag);
+    wrapper.append(time, newGame, flag, countMoves);
+    container.append(title, wrapper, field, soundBtn);
     document.body.append(container);
 }
 createContainer();
+
+let countFlag = document.querySelector('.count_flag');
+let countFlags = 9;
 
 //create field for mines-----------------------------
 function createField() {
@@ -59,12 +72,38 @@ function startGame() {
             while (minesIndex.includes(index)) {
                 minesIndex = [...Array(cellsCount).keys()].sort(() => Math.random() - 0.5).slice(0, minesCount);
             }
-            console.log('dfhgh')
+            console.log('bomb')
         }
         openCell(row, column);
+        const audio = new Audio();
+        audio.src = 'assets/openCell.mp3';
+        audio.play();
+        if(soundBtn.classList.contains('sound')) {
+            isPlay = false;
+            audio.volume = 0;
+        }
+        isPlay = true;
         countMoves.textContent = countMov++;
-       
-        
+    })
+
+    
+    field.addEventListener('contextmenu', (event) => {
+        event.preventDefault();
+        if(event.target.tagName !== 'BUTTON') {
+            return;
+        }
+       //если кликаешь на циру то она превращется в флажок такого не должно быть
+        if(countFlags !== -1 ) {
+            event.target.innerHTML = '<img src="assets/icon-flag.png" alt="flag" width="70" />';
+                //event.target.classList.add('flag_img');
+                countFlag.textContent = countFlags--;
+                const audio = new Audio();
+                audio.src = 'assets/flag.mp3';
+                audio.play();
+                if(soundBtn.classList.contains('sound')) {
+                    audio.volume = 0;
+                }
+        }
     })
 
     function isValidCount(row, column) {
@@ -97,7 +136,14 @@ function startGame() {
         if(isMines(row, column)) {
             cell.innerHTML = '<img src="assets/bomb.svg" alt="Mine" />';
             cell.style.backgroundColor = 'red';
-            setTimeout(getLoseMessage, 800);
+            const audio = new Audio();
+            audio.src = 'assets/bomb.mp3';
+            audio.play();
+            audio.volume = 1;
+            if(soundBtn.classList.contains('sound')) {
+                audio.volume = 0;
+            }
+            setTimeout(getLoseMessage, 900);
             clearTimeout(t);
             return;
         }
@@ -125,6 +171,13 @@ function startGame() {
                 window.location.reload();
                 document.body.classList.add('lock');
             })
+            const audio = new Audio();
+            audio.src = 'assets/win.mp3';
+            audio.play();
+            if(soundBtn.classList.contains('sound')) {
+                audio.volume = 0;
+                return;
+            }
         }
 
         function getLoseMessage() {
@@ -145,6 +198,13 @@ function startGame() {
                 window.location.reload();
                 document.body.classList.add('lock');
             })
+            const audio = new Audio();
+            audio.src = 'assets/lose.mp3';
+            audio.play();
+            if(soundBtn.classList.contains('sound')) {
+                audio.volume = 0;;
+                return;
+            }
         }
 
         const count = getMinesCount(row, column);
@@ -264,6 +324,30 @@ const newGame = document.querySelector('.new_game-btn');
 newGame.addEventListener('click', () => {
         window.location.reload();
     })
+
+const soundBtn = document.querySelector('.sound-btn');
+soundBtn.addEventListener('click', () => {
+    soundBtn.classList.toggle('sound');
+})
+
+let isPlay = false;
+
+/*window.addEventListener('load', () => {
+    const audio = new Audio();
+    audio.src = 'assets/fonGame.mp3';
+    audio.play();
+    audio.volume = 0.2;
+    audio.onended = function() {
+    audio.play();
+   }
+    if(soundBtn.classList.contains('sound')){
+        audio.pause();
+        return;
+    }
+    
+    isPlay = true;
+    playAudio();  
+})*/
 
 
 
