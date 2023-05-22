@@ -404,3 +404,55 @@ button:disabled {
     background-color: #dcd8cc;
 }
 
+@media (max-width: 918px) {
+    .title-name {
+        font-size: 60px;
+    }
+
+    .container {
+        max-width: 600px;
+    }
+
+    .wrapper {
+        max-width: 600px;
+    }
+
+    .message-container {
+        max-width: 600px;
+    }
+}
+
+@media (max-width: 680px) {
+    .title-name {
+        font-size: 30px;
+    }
+
+    .container {
+        max-width: 500px;
+    }
+
+    .wrapper {
+        max-width: 500px;
+    }
+
+    .field {
+        grid-template-columns: repeat(10, 30px);
+    }
+
+    .cell {
+        height: 30px;
+    }
+
+    .new_game-btn,
+    .easy,
+    .medium,
+    .hard {
+        width: 90px;
+    }
+
+    .message-container {
+        max-width: 450px;
+        height: 320px;
+    }
+}
+
