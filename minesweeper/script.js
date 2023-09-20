@@ -121,7 +121,8 @@ function startGame() {
       return;
     }
     event.target.textContent = ' ';
-    const index = cells.indexOf(event.target);
+    const index = cells.indexOf(event.target); // place of click
+
     const column = index % width;
     const row = Math.floor(index / width);
     firstClick++;
@@ -129,7 +130,6 @@ function startGame() {
       while (minesIndex.includes(index)) {
         minesIndex = [...Array(cellsCount).keys()].sort(() => Math.random() - 0.5).slice(0, minesCount);
       }
-      // console.log('bomb');
     }
     openCell(row, column);
     const audio = new Audio();
@@ -151,11 +151,11 @@ function startGame() {
       event.target.classList.toggle('flag_img');
       // innerHTML = '<img src="assets/icon-flag.png" alt="flag" width="70" />';
       countFlag.textContent = countFlags--;
-      /* if(event.target.classList.contains('flag_img') ) {
-                    event.target.classList.remove('flag_img');
-                    countFlag.textContent = countFlags++;
-                    return;
-                } */
+      //  if(event.target.classList.contains('flag_img') ) {
+      //               event.target.classList.remove('flag_img');
+      //               countFlag.textContent = countFlags++;
+      //               return;
+      //  }
       const audio = new Audio();
       audio.src = 'assets/flag.mp3';
       audio.play();
